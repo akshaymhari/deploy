@@ -1,22 +1,46 @@
+<div>
+
+  <mat-toolbar color="primary">
+     <span>Product List</span>
+    <span class="fill-space"></span>
+    <span>
+
+      <form [formGroup]="searchform" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <mat-form-field appearance="outline" class="appear" >
+              <mat-label>Search</mat-label>
+              <input matInput placeholder="Search" formControlName="search" >
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+      </form>
+    </span>
+  </mat-toolbar>
 
 
-<table mat-table [dataSource]="details" class="mat-elevation-z8">
+</div>
 
-  
+<div>
 
-  
+
+
+<table mat-table #table [dataSource]="details" class="mat-elevation-z8">
+
+
+
+
 <ng-container matColumnDef="sn">
    <th mat-header-cell *matHeaderCellDef> Sl no. </th>
    <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
   </ng-container>
 
- 
+
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
- 
+
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -37,9 +61,24 @@
     <td mat-cell *matCellDef="let element"> {{element.price}} </td>
   </ng-container>
 
-  
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
 </table>
+</div>
 
+<div>
+<br><br>
+
+
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               (page)="pageEvent = $event"
+               (click)="index($event)"
+               >
+</mat-paginator>
+
+
+
+</div>
