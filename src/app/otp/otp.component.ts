@@ -18,7 +18,7 @@ export class OtpComponent implements OnInit {
   host: string = environment.serverpath;
 
   login: object;
-  token = sessionStorage.getItem( "access" );
+  token = sessionStorage.getItem("access");
 
   constructor(private router: Router, private http: HttpClient, public operation: OperationService) {
     this.OTPForm = new FormGroup({
@@ -43,16 +43,12 @@ export class OtpComponent implements OnInit {
       res => {
 
         this.login = res;
-        sessionStorage.setItem( "token", this.login[ "access" ]);
+        sessionStorage.setItem("token", this.login["access"]);
         this.router.navigate(['prod-list']);
       },
       err => {
         console.log(err.message);
       }
     );
-
-
   }
-
-
 }

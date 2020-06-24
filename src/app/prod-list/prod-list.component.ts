@@ -14,20 +14,16 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./prod-list.component.css']
 })
 export class ProdListComponent implements OnInit {
-  details:object;
+  details: object;
+  arr = [];
 
-    // MatPaginator Inputs
-    length: number;
-    pageSize: number;
-    num: number = 1;
-    changeno: number = 1;
+  length: number;
+  pageSize: number;
+  num: number = 1;
 
-
-    // MatPaginator Output
-    pageEvent: PageEvent;
-
-    searchform: FormGroup;
-    savesearch: object;
+  pageEvent: PageEvent;
+  searchform: FormGroup;
+  SearchDes = "";
 
   displayedColumns: string[] = ['sn', 'id', 'name', 'minorder', 'maxorder', 'price'];
 
@@ -39,22 +35,23 @@ export class ProdListComponent implements OnInit {
     this.searchform = new FormGroup({
       search: new FormControl('')
     });
-   }
+  }
 
   ngOnInit(): void {
     this.prolist(this.num);
   }
 
 
-  prolist(num){
-    return this.http.get(this.host + '/api/v1/fish/?page='+num, { headers: new HttpHeaders().set('Authorization', this.token) }).subscribe(
+  prolist(num) {
+    return this.http.get(this.host + '/api/v1/fish/?page=' + num, { headers: new HttpHeaders().set('Authorization', this.token) }).subscribe(
       res => {
 
-          this.details= res["results"];
-          console.log(res);
-          this.pageSize = res["page_size"];
-          this.length = res["count"];
-          this.num = res["num_pages"];
+        this.details = res["results"];
+        //console.log(res);
+
+        this.pageSize = res["page_size"];
+        this.length = res["count"];
+        this.num = res["num_pages"];
       },
       err => {
         console.log(err.message);
@@ -63,26 +60,26 @@ export class ProdListComponent implements OnInit {
     );
   }
 
-index(event){
+  index(event) {
     console.log(this.pageEvent.pageIndex);
     this.num = this.pageEvent.pageIndex + 1;
     this.prolist(this.num);
 
-}
+  }
 
-onSubmit() {
-  let data = this.searchform.value;
-  console.log(data.search);
+  onSubmit() {
+    let data = this.searchform.value;
+    console.log(data.search);
 
-  return this.http.get(this.host + '/api/v1/fish/?page='+this.num+'&search='+data.search, { headers: new HttpHeaders().set('Authorization', this.token) }).subscribe(
-    res => {
+    return this.http.get(this.host + '/api/v1/fish/?page=' + this.num + '&search=' + data.search, { headers: new HttpHeaders().set('Authorization', this.token) }).subscribe(
+      res => {
         console.log(res);
-    },
-    err => {
-      console.log(err.message);
+      },
+      err => {
+        console.log(err.message);
 
-    }
-  );
-}
+      }
+    );
+  }
 }
 

@@ -1,12 +1,8 @@
 .example-card {
     max-width: 400px;
-  }
+}
 
-.main-div{
+.main-div {
     display: flex;
     justify-content: center;
-    
-}  
-
-
-  
+}

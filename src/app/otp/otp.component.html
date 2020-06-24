@@ -1,34 +1,31 @@
-
 <div class="main-div">
-<mat-card class="example-card">
-  
-  <img mat-card-image src="../assets/login.png" >
-  <mat-card-content>
-    
-<div class="container main-div">
-	<form [formGroup]="OTPForm" (ngSubmit)="onSubmit()" novalidate>
-		<div class="form-group">
-			
-     
+    <mat-card class="example-card">
 
-      <p>
-        <mat-form-field appearance="outline">
-            <mat-label>OTP</mat-label>
-            <input matInput placeholder="OTP" formControlName="number">
-            <mat-icon matSuffix>call</mat-icon>
-            
-        </mat-form-field>
-     </p>
+        <img mat-card-image src="../assets/login.png">
+        <mat-card-content>
 
-        <div class="main-div">
-            <button mat-raised-button color="primary">Submit</button>
-        </div>    
-        
-    </div>
-    
-  </form>
-</div>
-  </mat-card-content>
-  
-</mat-card>
+            <div class="container main-div">
+                <form [formGroup]="OTPForm" (ngSubmit)="onSubmit()" novalidate>
+                    <div class="form-group">
+
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>OTP</mat-label>
+                                <input matInput placeholder="OTP" formControlName="number">
+                                <mat-icon matSuffix>call</mat-icon>
+
+                            </mat-form-field>
+                        </p>
+
+                        <div class="main-div">
+                            <button mat-raised-button color="primary">Submit</button>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
 </div>

@@ -19,13 +19,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SearchproPipe } from './prod-list/searchpro.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     OtpComponent,
-    ProdListComponent
+    ProdListComponent,
+    SearchproPipe
   ],
   imports: [
     BrowserModule,
